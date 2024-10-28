@@ -41,7 +41,7 @@
 
     - name: Verify nginx service
       become: yes
-      shell: curl -I http://localhost
+      shell: curl -I http://localhost:80
       register: nginx_status
       failed_when: "'200 OK' not in nginx_status.stdout"
 
