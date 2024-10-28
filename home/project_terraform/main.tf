@@ -56,7 +56,7 @@ module "ec2" {
   instance_name   = var.instance_name
   subnet_id       = aws_subnet.public.id
   vpc_id          = aws_vpc.main.id
-  security_group_ids = [aws_security_group.ec2_sg.id]  # Pass the security group ID
+  security_group_ids = [aws_security_group.ec2_sg.id]  
 }
 
 resource "aws_launch_configuration" "ec2_launch_config" {
