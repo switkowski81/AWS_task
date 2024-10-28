@@ -21,15 +21,3 @@ variable "instance_name" {
   type        = string
   default     = "my-ec2-instance"
 }
-
-variable "public_key_path" {
-  description = "Path to the public SSH key file"
-  type        = string
-  default     = "~/.ssh/id_rsa.pub"
-}
-
-variable "key_name" {
-  description = "Nazwa klucza SSH do EC2"
-  type        = string
-  default     = "project_key"  # Klucz wytworzony w konsoli AWS
-}
