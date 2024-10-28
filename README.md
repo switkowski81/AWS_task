@@ -13,4 +13,4 @@ Katalogi /home/project_terraform oraz /home/project_ansbile zawierają kod źró
    e /home/project_ansbile/ansible-playbook -i inventory ansible-playbook.yml
    
    
-2. Domyslnie tworzona jest 1 maszyna EC2 , można więcej korzystająć z parametru:  terraform apply -var="instance_count=3"
+2. Ilośc tworzonych instancji kontrolujemy parametrem:   np:  terraform apply -var="instance_count=3"
