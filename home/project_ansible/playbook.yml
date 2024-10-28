@@ -1,0 +1,50 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install Docker on Debian/Ubuntu
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Docker on RedHat/CentOS/Amazon Linux
+      yum:
+        name: docker
+        state: present
+      when: ansible_os_family in ["RedHat", "Amazon"]
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Run nginx container
+      docker_container:
+        name: nginx
+        image: nginx:latest
+        state: started
+        ports:
+          - "80:80"
+
+    - name: Verify nginx service
+      shell: curl -I http://localhost
+      register: nginx_status
+      failed_when: "'200 OK' not in nginx_status.stdout"
+
+    - name: Gather system information
+      setup:
+        gather_subset:
+          - 'hardware'
+          - 'network'
+          - 'virtual'
+
+    - name: Display CPU, RAM, IP, and Disk usage
+      debug:
+        msg:
+          - "CPU: {{ ansible_processor_vcpus }} vCPUs"
+          - "RAM: {{ ansible_memtotal_mb }} MB"
+          - "IP Address: {{ ansible_default_ipv4.address }}"
+          - "Disk Usage: {{ ansible_mounts[0].size_available / (1024*1024) }} MB free"
+          
