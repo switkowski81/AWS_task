@@ -17,3 +17,8 @@ variable "vpc_id" {
   description = "ID of the VPC"
   type        = string
 }
+
+variable "security_group_ids" {
+  description = "List of security group IDs for the EC2 instances"
+  type        = list(string)
+}
