@@ -28,7 +28,7 @@ module "ec2" {
   instance_type   = var.instance_type
   instance_name   = var.instance_name
   subnet_id       = aws_subnet.public.id
-  vpc_id          = aws_vpc.main.id  # Przekazanie ID VPC
+  vpc_id          = aws_vpc.main.id 
 }
 
 
@@ -39,7 +39,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.1.0/24"
-  map_public_ip_on_launch = true  # Każda instancja w tej podsieci będzie miała publiczne IP
+  map_public_ip_on_launch = true  
 }
 
 resource "aws_security_group" "ec2_sg" {
