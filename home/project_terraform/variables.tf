@@ -31,5 +31,5 @@ variable "public_key_path" {
 variable "key_name" {
   description = "Nazwa klucza SSH do EC2"
   type        = string
-  default     = "project_key"  # Upewnij się, że klucz istnieje w AWS
+  default     = "project_key"  # Klucz wytworzony w konsoli AWS
 }
