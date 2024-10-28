@@ -3,8 +3,11 @@ Katalogi /home/project_terraform oraz /home/project_ansbile zawierają kod źró
 2. Jeżęli obciązenie instancji EC2 przekracz 90% do CPU to tworzona jest nowa.
 3. W tle ( na maszynie służacej do deploymentu - ja robiłem to w shellu konsoli AWS) co 1 minut chodzi skrypt do dynamicznego aktualizowania inventory ansible i uruchamiania ansible
 
-   Zawartosc cron;a
+   Zawartosc cron'a
+   
    1 * * * * /home/project_ansible/run_ansible.sh >> /home/project_ansible/ansible_run.log 2>
+
+   
 run_ansible.sh
 
 #!/bin/bash
